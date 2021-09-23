@@ -43,7 +43,7 @@
                                 style="background-color: #cecece; border-radius: 50%;" height="30" width="30">
                     </td>
                     <td>{{$admin->name}}</td>
-                    <td>{{$admin->role}}</td>
+                    <td>{{$admin->role->name}}</td>
                     <td>{{$admin->created_at->isoFormat('LL')}}</td>
 
                     <td class="d-flex">

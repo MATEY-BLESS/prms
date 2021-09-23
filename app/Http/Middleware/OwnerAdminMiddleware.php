@@ -18,7 +18,7 @@ class OwnerAdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         // $role = Auth::user()->role;
-        $role = Auth::guard('admin')->user()->role;
+        $role = Auth::guard('admin')->user()->role->name;
         if ($role == 'owner' || $role == 'senior-admin'){
             return $next($request);
         }

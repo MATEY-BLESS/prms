@@ -58,7 +58,7 @@
         </div>
 
         <div class="d-flex">
-            <span class="user-name" >{{Auth::user()->name}} </span>
+            <span class="user-name" >{{Auth::user()->name }} </span>
 
             {{-- logout popup menu --}}
             <div class="logout-popup" >

@@ -14,7 +14,13 @@ class Role extends Model
     ];
 
     // relationships
-    public function admin(){
-        return $this->belongsTo('App\Models\Admin');
-    }
+        // this admin() is to determine who added a role to the role table
+        public function admin(){
+            return $this->belongsTo('App\Models\Admin');
+        }
+
+        // this admins is for grouping admins by role
+        public function admins(){
+            return $this->hasMany('App\Models\Admin');
+        }
 }

@@ -90,6 +90,7 @@
 <div class="side-nav-main">
     <ul class="side-nav-items">
 
+        {{-- dashboard --}}
         <div class="list-item-effect">
             <li>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rgb(48, 48, 95)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
@@ -97,11 +98,19 @@
             </li>
         </div>
 
-
+        {{-- doctors --}}
         <div class="list-item-effect">
             <li>
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="rgb(48, 48, 95)"><g><rect fill="none" height="24" width="24"/><g><path d="M19,5v14H5V5H19 M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3L19,3z"/></g><path d="M14,17H7v-2h7V17z M17,13H7v-2h10V13z M17,9H7V7h10V9z"/></g></svg>
-                <a href="{{ route('dashboard.blog.index') }}">Blog Articles</a>
+                <a href="{{ route('dashboard.doctors.index') }}">Doctors</a>
+            </li>
+        </div>
+
+        {{-- patients --}}
+        <div class="list-item-effect">
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="rgb(48, 48, 95)"><g><rect fill="none" height="24" width="24"/></g><g><path d="M20,10V8h-4V4h-2v4h-4V4H8v4H4v2h4v4H4v2h4v4h2v-4h4v4h2v-4h4v-2h-4v-4H20z M14,14h-4v-4h4V14z"/></g></svg>
+                <a href="{{route('dashboard.patients.index')}}">Patients</a>
             </li>
         </div>
 
@@ -137,16 +146,11 @@
         <div class="list-item-effect">
             <li>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rgb(48, 48, 95)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/></svg>
-                <a href="{{route('dashboard.category.index')}}">Categories</a>
+                <a href="{{route('dashboard.departments.index')}}">Department</a>
             </li>
         </div>
 
-        <div class="list-item-effect">
-            <li>
-                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="rgb(48, 48, 95)"><g><rect fill="none" height="24" width="24"/></g><g><path d="M20,10V8h-4V4h-2v4h-4V4H8v4H4v2h4v4H4v2h4v4h2v-4h4v4h2v-4h4v-2h-4v-4H20z M14,14h-4v-4h4V14z"/></g></svg>
-                <a href="{{route('dashboard.tag.index')}}">Tags</a>
-            </li>
-        </div>
+
 
 
         <div class="list-item-effect">

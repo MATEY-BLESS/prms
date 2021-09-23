@@ -115,6 +115,36 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/dashboard/notification/jobs', 'BackendJobController@pending')->name('dashboard.jobs.pending');
 
 
+        // doctors
+        Route::resource('/dashboard/doctors', 'BackendDoctorsController')->names([
+            'index' => 'dashboard.doctors.index',
+            'create' => 'dashboard.doctors.create',
+            'show' => 'dashboard.doctors.show',
+            'store' => 'dashboard.doctors.store',
+            'edit' => 'dashboard.doctors.edit',
+            'destroy' => 'dashboard.doctors.destroy',
+        ]);
+
+        // departments
+        Route::resource('/dashboard/departments', 'BackendDepartmentsController')->names([
+            'index' => 'dashboard.departments.index',
+            'create' => 'dashboard.departments.create',
+            'show' => 'dashboard.departments.show',
+            'store' => 'dashboard.departments.store',
+            'edit' => 'dashboard.departments.edit',
+            'destroy' => 'dashboard.departments.destroy',
+        ]);
+
+        // patients
+        Route::resource('/dashboard/patients', 'BackendPatientsController')->names([
+            'index' => 'dashboard.patients.index',
+            'create' => 'dashboard.patients.create',
+            'show' => 'dashboard.patients.show',
+            'store' => 'dashboard.patients.store',
+            'edit' => 'dashboard.patients.edit',
+            'destroy' => 'dashboard.patients.destroy',
+        ]);
+
     });
 
 

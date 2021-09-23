@@ -48,19 +48,28 @@ class RegisteredAdminController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'role' => 'required|string',
+            'role_id' => 'nullable',
+            'department_id' => 'nullable',
+            'image' => 'mimes:jpeg,jpg,bmp,png',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        if(request('image')){
+            $filename = $request->image->getClientOriginalName();
+            $input['image'] = request('image')->move('profiles', $filename);
+        }
 
         $admin = Admin::create([
             'name' => $request->name,
             'slug' => Str::of($request['name'])->slug('-'),
             'email' => $request->email,
-            'role' => $request->role,
+            'role_id' => $request->role_id,
+            'department_id' => $request->department_id,
+            'image' => $input['image'],
             'password' => Hash::make($request->password),
         ]);
 
-        event(new NewAdminUserEvent($admin));
+        // event(new NewAdminUserEvent($admin));
 
         // Auth::login($admin);
 

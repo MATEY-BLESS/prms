@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::get('/dashboard', function () {
     return view('accounts.index');
-})->middleware(['auth', 'verified'])->name('dashboard.user');
+})->middleware(['auth'])->name('dashboard.user');
 
 Route::middleware(['auth'])->group(function () {
     // Account user profile

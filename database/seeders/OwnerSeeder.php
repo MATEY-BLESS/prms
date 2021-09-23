@@ -19,7 +19,8 @@ class OwnerSeeder extends Seeder
             'slug' => 'prosper-sosu',
             'email' => 'owner@starter.com',
             'password' => bcrypt('password'),
-            'role' => 'owner',
+            'role_id' => 1,
+            'department_id' => 1,
             'status' => 'active',
         ]);
     }

@@ -19,7 +19,8 @@ class SuperAdminSeeder extends Seeder
             'slug' => 'senior-admin',
             'email' => 'superadmin@starter.com',
             'password' => bcrypt('password'),
-            'role' => 'senior-admin',
+            'role_id' => 2,
+            'department_id' => 1,
             'status' => 'active',
         ]);
     }

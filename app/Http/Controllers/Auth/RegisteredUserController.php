@@ -40,6 +40,14 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'dob' => 'nullable',
+            'age' => 'nullable|integer',
+            'region' => 'nullable|string',
+            'locality' => 'nullable|string',
+            'mobile' => 'nullable|string',
+            'next_of_kin' => 'nullable|string',
+            'emergency_contact' => 'nullable|string',
+            'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
 
         $user = User::create([
@@ -49,12 +57,24 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $patient = $user->patient()->create([
+            'dob' => $request->dob,
+            'age' => $request->age,
+            'region' => $request->region,
+            'locality' => $request->locality,
+            'mobile' => $request->mobile,
+            'next_of_kin' => $request->next_of_kin,
+            'emergency_contact' => $request->emergenccy_contact,
+            'image' => $request->image,
+        ]);
 
-        event(new Registered($user));
 
-        Auth::login($user);
+        // event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
+        // Auth::login($user);
+
+        return redirect()->route('dashboard.patients.index');
+        // return redirect(RouteServiceProvider::HOME);
         // return redirect()->route('verification.notice');
     }
 }

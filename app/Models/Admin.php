@@ -21,8 +21,10 @@ class Admin extends Authenticatable
         'slug',
         'email',
         'password',
-        'role',
+        'role_id',
+        'department_id',
         'status',
+        'image',
     ];
 
     /**
@@ -49,6 +51,10 @@ class Admin extends Authenticatable
         return $this->hasMany('App\Models\Article');
     }
 
+    public function departments(){
+        return $this->hasMany('App\Models\Department');
+    }
+
     public function categories(){
         return $this->hasMany('App\Models\Category');
     }
@@ -63,6 +69,14 @@ class Admin extends Authenticatable
 
     public function roles(){
         return $this->hasMany('App\Models\Role');
+    }
+
+    public function role(){
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    public function access(){
+        return $this->belongsTo('App\Models\Role');
     }
 
     public function newsletter(){
