@@ -15,4 +15,13 @@ class Patient extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function admins(){
+        return $this->belongsToMany(Admin::class)
+                    ->withTimestamps();
+    }
+
+    public function appointments(){
+        return $this->hasMany(Appointment::class);
+    }
 }

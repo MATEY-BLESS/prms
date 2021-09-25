@@ -29,5 +29,13 @@ class RoleSeeder extends Seeder
                 'admin_id' => 1,
             ]
         );
+
+        Role::create(
+            [
+                'name' => 'doctor',
+                'slug' => 'doctor',
+                'admin_id' => 1,
+            ]
+        );
     }
 }

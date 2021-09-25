@@ -62,7 +62,7 @@
         width: 100%;
     }
 
-    .patient-admin-label{
+    .appointment-admin-label{
         font-size: 12px;
         color: darkblue;
         font-family: 'Passion One', cursive;
@@ -72,14 +72,14 @@
 
 
 <div class="d-flex justify-content-between">
-    <h4>List of  Patients</h4>
+    <h4>Active Appointments</h4>
     <h4>
-        <a href="{{route('dashboard.patients.create')}}" class="btn btn-success btn-sm">Add Patient</a>
+        <a href="#" class="btn btn-success btn-sm">Add Appointment</a>
     </h4>
 </div>
 
 <div class="section-container">
-    @if ($patients->count() > 0)
+    @if ($appointments->count() > 0)
 
         <div id="tableView">
             <table class="table table-responsive table-hover" >
@@ -87,50 +87,48 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Patient Name</th>
+                        <th scope="col">Purpose</th>
                         <th scope="col">Profile Image</th>
                         <th scope="col">Created At</th>
                         <th scope="col">Added By</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @forelse ($patients as $patient)
-                    <tr>
-                        <td scope="row" id="patient">{{$patient->id}}</td>
-                        <td>{{$patient->name}}</td>
-                        <td>
-                            <img src="{{asset($patient->image)}}"
-                                    width="50" height="50" style="border-radius: 50px;">
-                        </td>
-                        <td>{{$patient->created_at->isoFormat('LL')}}</td>
+                    @forelse ($appointments as $appointment)
+                        {{-- @foreach ($appointment->patient as $patient) --}}
+                        <tr>
+                            <td scope="row" id="appointment">{{$appointment->id}}</td>
+                            <td>{{$appointment->patient->user->name}}</td>
+                            <td>{{$appointment->purpose}}</td>
+                            <td>
+                                <img src="{{asset($appointment->image)}}"
+                                        width="50" height="50" style="border-radius: 50px;">
+                            </td>
+                            <td>{{$appointment->created_at->isoFormat('LL')}}</td>
 
-                        <td>Who added patient</td>
+                            <td>Who added appointment</td>
+                            <td>{{$appointment->status}}</td>
 
-                        <td class="d-flex justify-content-between">
-                            <span>
-                                <a href="{{route('dashboard.patient.doctor.assign', $patient->id)}}" class="btn btn-info btn-sm">Assign Doctor</a>
-                            </span>
-
-                            <span><a href="{{route('dashboard.patients.show', $patient)}}" class="btn btn-success btn-sm">VIEW</a></span>
-                            <span class="mx-1"><a href="{{route('dashboard.patients.edit', $patient)}}"
-                                    class="btn btn-warning btn-sm">EDIT</a></span>
-                            <span >
-                                <form action="{{route('dashboard.patients.destroy', $patient->id)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="btn btn-danger btn-sm ml-2">DELETE</button>
-                                </form>
-                            </span>
+                            <td class="d-flex justify-content-between align-items-center">
+                                @if ($appointment->doctor_id != null)
+                                    doctor assigned
+                                @else
+                                <span class="me-1">
+                                    <a href="{{route('dashboard.appointments.edit', $appointment->id)}}" class="btn btn-info btn-sm">Assign Doctor</a>
+                                </span>
+                                @endif
 
 
-                        </td>
+                                <span><a href="#" class="btn btn-success btn-sm">VIEW</a></span>
+                            </td>
+                        </tr>
+                        {{-- @endforeach --}}
 
-
-                    </tr>
                     @empty
-                        <td>No patients</td>
+                        <td>No appointments</td>
                     @endforelse
                 </tbody>
             </table>
@@ -139,9 +137,9 @@
     @else
 
         <div class="list-else-message">
-            <span >No patients.</span>
+            <span >No appointments.</span>
             <div class="my-4">
-                <span class="fs-2">All <b>patients</b> will show here in table with grid view option.</span>
+                <span class="fs-2">All <b>appointments</b> will show here in table with grid view option.</span>
             </div>
         </div>
 

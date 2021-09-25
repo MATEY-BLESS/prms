@@ -47,6 +47,15 @@ class Admin extends Authenticatable
     ];
 
      // relationships
+    public function patients(){
+        return $this->belongsToMany(Patient::class)
+                    ->withTimestamps();
+    }
+
+    public function appointments(){
+        return $this->belongsTo('App\Models\Appointment');
+    }
+
     public function articles(){
         return $this->hasMany('App\Models\Article');
     }
@@ -67,10 +76,12 @@ class Admin extends Authenticatable
         return $this->hasMany('App\Models\About');
     }
 
+    // this determines an admin can create more roles
     public function roles(){
         return $this->hasMany('App\Models\Role');
     }
 
+    // each admin and their role
     public function role(){
         return $this->belongsTo('App\Models\Role');
     }

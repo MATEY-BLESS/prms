@@ -18,10 +18,15 @@ Route::middleware(['guest:admin'])->group(function () {
 
 Route::middleware(['auth:admin'])->group(function () {
 
-    // Admin homepage
+    // Admin Dashboard
     Route::get('/dashboard/admin', function () {
         return view('dashboard.index');
     })->name('dashboard.admin');
+
+    // Doctor Dashboard
+    Route::get('/dashboard/doctor/home', function () {
+        return view('dashboard.doctor-dashboard');
+    })->name('dashboard.doctor');
 
     // Super Admin Access: Admin and APP owner access
     Route::middleware(['super.access'])->group(function () {
@@ -60,6 +65,16 @@ Route::middleware(['auth:admin'])->group(function () {
             'edit' => 'dashboard.category.edit',
             'update' => 'dashboard.category.update',
             'destroy' => 'dashboard.category.destroy',
+        ]);
+
+        // departments
+        Route::resource('/dashboard/departments', 'BackendDepartmentsController')->names([
+            'index' => 'dashboard.departments.index',
+            'create' => 'dashboard.departments.create',
+            'show' => 'dashboard.departments.show',
+            'store' => 'dashboard.departments.store',
+            'edit' => 'dashboard.departments.edit',
+            'destroy' => 'dashboard.departments.destroy',
         ]);
 
         // Tags
@@ -125,15 +140,12 @@ Route::middleware(['auth:admin'])->group(function () {
             'destroy' => 'dashboard.doctors.destroy',
         ]);
 
-        // departments
-        Route::resource('/dashboard/departments', 'BackendDepartmentsController')->names([
-            'index' => 'dashboard.departments.index',
-            'create' => 'dashboard.departments.create',
-            'show' => 'dashboard.departments.show',
-            'store' => 'dashboard.departments.store',
-            'edit' => 'dashboard.departments.edit',
-            'destroy' => 'dashboard.departments.destroy',
-        ]);
+        // Assign Patient to Doctor(s)
+        Route::get('/dashboard/patients/assign/{id}', 'BackendPatientsController@assign_doctor')
+            ->name('dashboard.patient.doctor.assign');
+
+        Route::post('/dashboard/patients/assign', 'BackendPatientsController@assign')
+            ->name('dashboard.doctor.assign');
 
         // patients
         Route::resource('/dashboard/patients', 'BackendPatientsController')->names([
@@ -144,6 +156,20 @@ Route::middleware(['auth:admin'])->group(function () {
             'edit' => 'dashboard.patients.edit',
             'destroy' => 'dashboard.patients.destroy',
         ]);
+
+        // appointments
+        Route::resource('/dashboard/appointments', 'BackendAppointmentsController')->names([
+            'index' => 'dashboard.appointments.index',
+            'create' => 'dashboard.appointments.create',
+            'show' => 'dashboard.appointments.show',
+            'store' => 'dashboard.appointments.store',
+            'edit' => 'dashboard.appointments.edit',
+            'destroy' => 'dashboard.appointments.destroy',
+        ]);
+
+        Route::post('/dashboard/appointments/{id}', 'BackendAppointmentsController@assign')
+        ->name('dashboard.appointments.doctor.assign');
+
 
     });
 
@@ -164,6 +190,10 @@ Route::middleware(['auth:admin'])->group(function () {
         'update' => 'dashboard.blog.update',
         'destroy' => 'dashboard.blog.destroy',
     ]);
+
+    // Doctor's Access
+    Route::get('/dashboard/doctor/patients', 'BackendDoctorsController@patients')
+            ->name('dashboard.doctors.patients.list');
 
 });
 

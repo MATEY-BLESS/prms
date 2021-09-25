@@ -72,7 +72,7 @@
                         <div class="col-md-6 my-3">
                             <label for="#" class="form-label">Role</label>
                             <select name="role_id" id=""
-                                    class="rounded" value="{{old('role')}}"
+                                    class="rounded" value="{{old('role_id')}}"
                                     style="width: 100%; height: 35px;">
 
                                 <option value="">Select Role</option>

@@ -18,14 +18,19 @@ class AuthController extends Controller
 
     public function store(Request $request)
     {
-        // admin login logic
-        if(!Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))){
+        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->filled('remember'))){
+
+            if(Auth::guard('admin')->user()->role->name == 'doctor'){
+                return redirect()->route('dashboard.doctor');
+            }
+
+            return redirect()->intended(route('dashboard.admin'));
+
+        } else{
             throw ValidationException::withMessages([
                 'email' => 'invalid email or password',
             ]);
         }
-
-        return redirect()->intended(route('dashboard.admin'));
 
     }
 

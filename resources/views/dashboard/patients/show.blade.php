@@ -3,11 +3,17 @@
 
 <style>
     .patient-img-box{
+        width: 100%;
         height: 230px;
         background-color: silver;
         border-radius: 5px;
+        padding: 1rem;
     }
-
+    .patient-img-box img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
     .patient-details-box{
         background-color: whitesmoke;
         min-height: 230px;
@@ -40,7 +46,7 @@
     {{-- patient image --}}
     <div class="col-md-3 col-xxl-3">
         <div class="patient-img-box" style="">
-
+            <img src="{{asset($patient->image)}}" alt="">
         </div>
     </div>
 
@@ -77,17 +83,33 @@
 
     {{-- related or recent activities --}}
     <div class="col-md-12 col-xxl-12">
-        <div class="recent-activity">
-            <h4 id="headingColor">Other Deatils</h4>
+        <div class="recent-activity border">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 id="headingColor">Other Deatils</h4>
 
-            <div class="other-details">
-                <p>DOB: {{$patient->dob}}</p>
-                <p>REGION: {{$patient->region}}</p>
-                <p>LOCALITY: {{$patient->locality}}</p>
-                <p>NEXT OF KIN: {{$patient->next_of_kin}}</p>
-                <p>MOBILE: {{$patient->mobile}}</p>
-                <p>EMERGENCY CONTACT: {{$patient->emergency_contact}}</p>
+                    <div class="other-details">
+                        <p>DOB: {{$patient->dob}}</p>
+                        <p>REGION: {{$patient->region}}</p>
+                        <p>LOCALITY: {{$patient->locality}}</p>
+                        <p>NEXT OF KIN: {{$patient->next_of_kin}}</p>
+                        <p>MOBILE: {{$patient->mobile}}</p>
+                        <p>EMERGENCY CONTACT: {{$patient->emergency_contact}}</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <h4 id="headingColor">Current Doctors</h4>
+                    <ol>
+                        @forelse ($patient->admins as $doctor)
+                        <li>Dr. {{$doctor->name}}</li>
+                        @empty
+                        <li>You have no doctor(s) currently assigned.</li>
+                        @endforelse
+                    </ol>
+                </div>
             </div>
+
         </div>
     </div>
 

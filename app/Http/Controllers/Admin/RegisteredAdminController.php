@@ -42,10 +42,10 @@ class RegisteredAdminController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Admin $admin, Request $request)
     {
         // return $request;
-        $request->validate([
+        $input = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'role_id' => 'nullable',
@@ -59,15 +59,28 @@ class RegisteredAdminController extends Controller
             $input['image'] = request('image')->move('profiles', $filename);
         }
 
-        $admin = Admin::create([
-            'name' => $request->name,
-            'slug' => Str::of($request['name'])->slug('-'),
-            'email' => $request->email,
-            'role_id' => $request->role_id,
-            'department_id' => $request->department_id,
-            'image' => $input['image'],
-            'password' => Hash::make($request->password),
-        ]);
+        // $admin = Admin::create([
+        //     'name' => $request->name,
+        //     'slug' => Str::of($request['name'])->slug('-'),
+        //     'email' => $request->email,
+        //     'role_id' => $request->role_id,
+        //     'department_id' => $request->department_id,
+        //     'image' => $input['image'],
+        //     'password' => Hash::make($request->password),
+        // ]);
+
+        $admin->name = $input['name'];
+        $admin->slug = Str::of($input['name'])->slug('-');
+        $admin->email = $input['email'];
+        $admin->role_id = $input['role_id'];
+        $admin->department_id = $input['department_id'];
+        $admin->password = Hash::make($input['password']);
+
+        if(request('image')){
+            $admin->image = $input['image'];
+        }
+
+        $admin->save();
 
         // event(new NewAdminUserEvent($admin));
 

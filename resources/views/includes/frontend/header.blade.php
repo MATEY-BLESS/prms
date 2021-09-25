@@ -10,7 +10,7 @@
         {{-- brand logo or name --}}
         <div>
             <a class="navbar-brand" href="/">
-                <strong>STARTER</strong>
+                <strong>{{config('app.name')}}</strong>
             </a>
         </div>
 
@@ -39,8 +39,9 @@
             </form>
 
             <div class="ms-3">
-                <a href="{{ route('login') }}" class="btn btn-primary btn-sm">Log in</a>
-                <a href="{{ route('register') }}" class="btn btn-success btn-sm">Create Account</a>
+                <a href="{{ route('admin.user.login') }}" class="btn btn-secondary btn-sm">Admin</a>
+                <a href="{{ route('admin.user.login') }}" class="btn btn-primary btn-sm">Doctor</a>
+                <a href="{{ route('login') }}" class="btn btn-success btn-sm">Patient</a>
             </div>
         </div>
 

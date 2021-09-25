@@ -10,9 +10,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('accounts.index');
-})->middleware(['auth'])->name('dashboard.user');
+Route::get('/dashboard', 'PublicPatientController@index')->middleware(['auth'])->name('dashboard.user');
 
 Route::middleware(['auth'])->group(function () {
     // Account user profile
@@ -35,6 +33,16 @@ Route::middleware(['auth'])->group(function () {
         'update' => 'dashboard.user.article.update',
         'destroy' => 'dashboard.user.article.destroy',
     ]);
+
+    // Appointment
+    Route::get('/dashboard/patient/appointment', 'PublicPatientController@appointment_index')
+    ->name('public.patient.appointment.index');
+
+    Route::get('/dashboard/patient/appointment/create', 'PublicPatientController@appointment_create')
+    ->name('public.patient.appointment.create');
+
+    Route::post('/dashboard/patient/appointment', 'PublicPatientController@appointment_store')
+    ->name('public.patient.appointment.store');
 });
 
 

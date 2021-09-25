@@ -71,11 +71,17 @@
 </style>
 
 
-<div class="d-flex justify-content-between">
-    <h4>List of  Doctors</h4>
-    <h4>
+<div class="d-flex justify-content-between mb-2">
+    <div>
+
+        <h4>List of  Doctors</h4>
+    </div>
+
+    <div>
+        <a href="#" class="btn btn-secondary btn-sm">Assign Patient</a>
         <a href="{{route('dashboard.doctors.create')}}" class="btn btn-success btn-sm">Add Doctor</a>
-    </h4>
+    </div>
+
 </div>
 
 <div class="section-container">

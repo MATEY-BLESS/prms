@@ -20,14 +20,8 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="">
+    <body>
         <style>
-            body{
-                /*#f3f4f8*/
-                /* background-color: rgb(231, 228, 228);  */
-
-            }
-
             /* MEDIA QUERIES */
             @media (min-width: 1400px) {
                 #contentContainer{
@@ -36,29 +30,43 @@
             }
         </style>
 
-        <div class="">
-            <!-- Page Heading -->
+        <!-- Page Heading -->
+        <div class="container-fluid">
             <header class="bg-white shadow-sm sticky-top">
                 @include('layouts.accounts.navigation')
             </header>
 
-            <div class="container-fluid">
-                <div class="row">
-                    {{-- sidebar --}}
-                    <div class="col-md-2 side-nav-box">
-                        @include('includes.accounts.sidebar-navs')
-                    </div>
+            <div class="row">
+                <div class="col-md-2"></div>
 
+                {{-- main content --}}
+                <div class="col-md-8 py-3">
                     {{-- main content --}}
-                    <div class="col-md-10 py-3">
-                        {{-- main content --}}
-                        <div class="container" id="contentContainer">
-                            <div class="row">
-                                @yield('content')
+                    <div class="" id="contentContainer">
+                        <div class="row">
+                            {{-- dashboard hero --}}
+                            <div class="col-md-12">
+                                <div class="dashboard-hero">
+                                    <h2>Hello {{auth()->user()->name}}</h2>
+                                </div>
+
+                                {{-- quick nav links --}}
+
+                                <div class="quick-nav-links my-4">
+                                    <a href="{{route('public.patient.appointment.index')}}" class="btn btn-info btn-sm mb-1">Appointments</a>
+                                    <a href="#" class="btn btn-info btn-sm mb-1">Prescriptions</a>
+                                    <a href="#" class="btn btn-info btn-sm mb-1">Messages</a>
+                                    <a href="#" class="btn btn-info btn-sm mb-1">Medical History</a>
+                                    <a href="{{route('dashboard.user')}}" class="btn btn-secondary btn-sm mb-1">Your Profile</a>
+                                </div>
                             </div>
+
+                            @yield('content')
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-2"></div>
             </div>
         </div>
 

@@ -77,4 +77,10 @@ class BackendDoctorsController extends Controller
     {
         //
     }
+
+    public function patients(){
+
+
+        return view('dashboard.doctors.patients');
+    }
 }

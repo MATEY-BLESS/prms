@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $input = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -49,6 +49,14 @@ class RegisteredUserController extends Controller
             'emergency_contact' => 'nullable|string',
             'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
+
+
+
+        if(request('image')){
+            $filename = $request->image->getClientOriginalName();
+            $input['image'] = request('image')->move('patients', $filename);
+        }
+
 
         $user = User::create([
             'name' => $request->name,
@@ -65,8 +73,14 @@ class RegisteredUserController extends Controller
             'mobile' => $request->mobile,
             'next_of_kin' => $request->next_of_kin,
             'emergency_contact' => $request->emergenccy_contact,
-            'image' => $request->image,
         ]);
+
+        if(request('image')){
+            $patient = $user->patient()->create([
+                'image' => $input['image'],
+            ]);
+
+        }
 
 
         // event(new Registered($user));

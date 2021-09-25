@@ -54,7 +54,7 @@
 <header class="p-3 dashboard-top-nav testing" id="headNav">
     <div class="d-flex justify-content-between" style="color: rgb(48, 48, 95); font-weight: bold;">
         <div style="width: ;">
-            <span>BRAND NAME</span>
+            <span>{{config('app.name')}}</span>
         </div>
 
         <div class="d-flex">
