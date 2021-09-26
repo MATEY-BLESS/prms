@@ -1,14 +1,6 @@
 @extends('layouts.dashboard')
 @section('content')
-<style>
-    .section-container{
-        min-height: 600px;
-        background-color: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 15px;
-    }
-</style>
+
 <div class="d-flex justify-content-between">
     <h4>Add Doctor</h4>
 

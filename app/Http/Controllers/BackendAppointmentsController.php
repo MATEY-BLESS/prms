@@ -54,7 +54,7 @@ class BackendAppointmentsController extends Controller
     public function assign(Request $request, $id){
         $appointment = Appointment::findOrFail($id);
 
-        $appointment->doctor_id = $request->doctor;
+        $appointment->admin_id = $request->admin;
         $appointment->save();
 
         return redirect()->route('dashboard.appointments.index');

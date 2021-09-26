@@ -18,16 +18,6 @@ Route::middleware(['guest:admin'])->group(function () {
 
 Route::middleware(['auth:admin'])->group(function () {
 
-    // Admin Dashboard
-    Route::get('/dashboard/admin', function () {
-        return view('dashboard.index');
-    })->name('dashboard.admin');
-
-    // Doctor Dashboard
-    Route::get('/dashboard/doctor/home', function () {
-        return view('dashboard.doctor-dashboard');
-    })->name('dashboard.doctor');
-
     // Super Admin Access: Admin and APP owner access
     Route::middleware(['super.access'])->group(function () {
         Route::get('/dashboard/admins', [AuthController::class, 'index'])->name('dashboard.admin.index');
@@ -173,8 +163,25 @@ Route::middleware(['auth:admin'])->group(function () {
 
     });
 
+    // Admin Dashboard
+    Route::get('/dashboard/admin', 'BackendDashboardController@index')->name('dashboard.admin');
 
-    Route::post('/admin/logout', [AuthController::class, 'destroy'])->name('admin.logout');
+    // Doctor Dashboard
+    Route::get('/dashboard/doctor/home', 'DoctorDashboardController@index')
+    ->name('dashboard.doctor');
+
+        // Patient
+        Route::get('/dashboard/doctor/patients', 'DoctorDashboardController@patients')
+        ->name('dashboard.doctors.patients.index');
+
+        // Appointment
+        Route::get('/dashboard/doctor/appointments', 'DoctorDashboardController@appointments')
+        ->name('dashboard.doctors.appointments.index');
+        Route::get('/dashboard/doctor/appointments/create', 'DoctorDashboardController@create_appointment')
+        ->name('dashboard.doctors.appointments.create');
+        Route::post('/dashboard/doctor/appointments', 'DoctorDashboardController@store_appointment')
+        ->name('dashboard.doctors.appointments.store');
+
 
     // Admin User Profiles
     Route::get('/dashboard/admins/profile', 'BackendAdminProfileController@index')
@@ -191,9 +198,8 @@ Route::middleware(['auth:admin'])->group(function () {
         'destroy' => 'dashboard.blog.destroy',
     ]);
 
-    // Doctor's Access
-    Route::get('/dashboard/doctor/patients', 'BackendDoctorsController@patients')
-            ->name('dashboard.doctors.patients.list');
+    Route::post('/admin/logout', [AuthController::class, 'destroy'])
+    ->name('admin.logout');
 
 });
 

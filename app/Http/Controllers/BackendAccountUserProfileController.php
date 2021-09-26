@@ -9,13 +9,13 @@ class BackendAccountUserProfileController extends Controller
 {
     public function index(){
         $appointments = Appointment::all();
-        return view('accounts.index', [
+        return view('patients.index', [
             'appointments' => $appointments,
         ]);
     }
 
     public function show()
     {
-        return view('accounts.profile');
+        return view('patients.profile');
     }
 }

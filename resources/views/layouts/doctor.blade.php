@@ -16,6 +16,7 @@
         <!-- Styles -->
         {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/doctors.css') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -52,6 +53,23 @@
                 <div class="col-lg-8 py-5">
                     {{-- main content --}}
                     <div class="row">
+                        {{-- quick navs --}}
+                        <div class="quick-nav-wrapper d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="doctor-name">
+                                <h1>Hello Dr. {{auth()->user()->name}}</h1>
+                            </div>
+
+
+                            <div>
+                                <a href="{{route('dashboard.doctor')}}" class="btn btn-secondary btn-sm my-1">Dashboard</a>
+                                <a href="{{route('dashboard.doctors.patients.index')}}" class="btn btn-info btn-sm my-1">Patients</a>
+                                <a href="{{route('dashboard.doctors.appointments.index')}}" class="btn btn-info btn-sm my-1">Appointments</a>
+                                <a href="#" class="btn btn-info btn-sm my-1">Prescriptions</a>
+                                <a href="#" class="btn btn-success btn-sm my-1">Your Profile</a>
+                            </div>
+                        </div>
+
+                        {{-- content --}}
                         @yield('content')
                     </div>
                 </div>

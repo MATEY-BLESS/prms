@@ -10,21 +10,20 @@ class PublicPatientController extends Controller
 {
     public function index()
     {
-
-        return view('accounts.index');
+        return view('patients.index');
     }
     public function appointment_index()
     {
         $appointments = Appointment::with('patient')->with('admin')->get();
         // dd($appointments);
-        return view('accounts.appointments.index', [
+        return view('patients.appointments.index', [
             'appointments' => $appointments,
         ]);
     }
 
     public function appointment_create()
     {
-        return view('accounts.appointments.create');
+        return view('patients.appointments.create');
     }
 
     public function appointment_store(Patient $patient, Request $request){

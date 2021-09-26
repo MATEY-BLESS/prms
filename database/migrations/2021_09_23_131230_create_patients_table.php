@@ -25,6 +25,7 @@ class CreatePatientsTable extends Migration
             $table->string('next_of_kin')->nullable();
             $table->string('emergency_contact')->nullable();
             $table->string('image')->nullable();
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

@@ -29,6 +29,10 @@
 
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+                    <div class="text-center mb-5">
+                        <a href="/" class="btn btn-success">BACK TO SITE</a>
+                    </div>
                     <div class="text-center">
                         <h1><strong>ADMIN LOGIN</strong></h1>
                     </div>

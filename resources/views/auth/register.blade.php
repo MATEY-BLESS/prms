@@ -153,7 +153,9 @@
                     {{-- something here --}}
                     <div class="col-lg-4">
                         <div class="user-login-left">
-                            <h1 class="fs-1">You'll enjoy what we promised.</h1>
+                            <h2 class="">
+                                <b>Enjoy Superior Patient Management</b>
+                            </h2>
                         </div>
                     </div>
 

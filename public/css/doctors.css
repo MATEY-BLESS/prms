@@ -1,0 +1,45 @@
+.main-stats{
+    height: 100px;
+}
+
+.main-stats-detail{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.main-stats,
+.site-performance,
+.top-articles,
+.extra-section{
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.site-performance,
+.top-articles,
+.extra-section{
+    min-height: 350px;
+}
+
+.stat-heading{
+    font-weight: bold;
+}
+
+.site-performance-data{
+    min-height: 90px;
+    background-color: #ececec;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* quick nav wrapper */
+.quick-nav-wrapper{
+    margin-bottom: 2rem;
+}
+.doctor-name h1{
+    font-weight: bolder;
+    font-size: 2rem;
+}

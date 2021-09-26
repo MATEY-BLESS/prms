@@ -1,24 +1,5 @@
 @extends('layouts.dashboard')
 @section('content')
-<style>
-    .section-container{
-        min-height: 190px;
-        background-color: whitesmoke;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 15px;
-    }
-
-    .list-else-message{
-        text-align: center;
-        padding: 100px;
-        color: #b1aeae;
-        font-size: 1rem;
-    }
-
-
-
-</style>
 
 <h4>Standard Pages</h4>
 <div class="col-md-12">

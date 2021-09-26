@@ -64,7 +64,8 @@
                     {{-- something here --}}
                     <div class="col-lg-4">
                         <div class="user-login-left">
-                            <h1 class="fs-1">Build something amazing for your audience.</h1>
+                            <h1 class="fs-1"><b>PRMS</b></h1>
+                            <h5>Patients Management</h5>
                         </div>
                     </div>
 
@@ -73,7 +74,13 @@
                     <div class="col-lg-8">
                         <div class="user-login-right">
 
-                            <h2 id="mainHeadings"><strong>Sign In</strong></h2>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2 id="mainHeadings"><strong>Sign In</strong></h2>
+                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                                    {{ __('Create Account') }}
+                                </a>
+                            </div>
+
                              <!-- Session Status -->
                             <x-auth-session-status class="mb-4" :status="session('status')" />
 

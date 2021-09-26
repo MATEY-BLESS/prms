@@ -4,7 +4,13 @@
 
 <style>
     .main-stats{
-        height: 190px;
+        height: 100px;
+
+    }
+    .main-stats-wrapper{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .main-stats,
@@ -44,25 +50,33 @@
         {{-- Brief Stats: section 1 --}}
         <div class="col-md-4">
             <div class="main-stats shadow-sm">
-                <h5 class="stat-heading">Articles</h5>
-                <p><span><b>100</b></span> Published</p>
-                <p><span><b>5</b></span> Drafted</p>
+                <h5 class="stat-heading">Doctors</h5>
+
+                <div class="main-stats-wrapper">
+                    <p><span><b>{{$doctors[0]->id}}</b></span> Added</p>
+                    <p><span><b>3</b></span> Active</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="main-stats shadow-sm">
-                <h5 class="stat-heading">Account Users</h5>
-                <p><span><b>100</b></span> Published</p>
-                <p><span><b>5</b></span> Drafted</p>
+                <h5 class="stat-heading">Patients</h5>
+                <div class="main-stats-wrapper">
+                    <p><span><b>{{$patients->count()}}</b></span> Total</p>
+                    <p><span><b>2</b></span> Active</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="main-stats shadow-sm">
-                <h5 class="stat-heading">Subscribers</h5>
-                <p><span><b>100</b></span> Published</p>
-                <p><span><b>5</b></span> Drafted</p>
+                <h5 class="stat-heading">Appointments</h5>
+                <div class="main-stats-wrapper">
+                    <p><span><b>{{$appointments->count()}}</b></span> Received</p>
+                    <p><span><b>2</b></span> Assigned</p>
+                </div>
+
             </div>
         </div>
     {{-- End section 1 --}}
@@ -114,29 +128,9 @@
         {{-- Top Articles --}}
         <div class="col-md-8">
             <div class="top-articles">
-                <h5 class="stat-heading">Top Performing Articles</h5>
+                <h5 class="stat-heading">New Patients Awaiting Appointment</h5>
             </div>
         </div>
     {{-- End section 2 --}}
-
-
-    {{-- Section 3 --}}
-        {{-- Something exxtra on the dashboard --}}
-        <div class="col-md-6">
-            <div class="extra-section">
-                <h5 class="stat-heading">Something Extra Here</h5>
-            </div>
-        </div>
-
-        {{-- Something extra here --}}
-        <div class="col-md-6">
-            <div class="extra-section">
-                <h5 class="stat-heading">Something Extra Here</h5>
-            </div>
-        </div>
-
-    {{-- End Section 3 --}}
-
-
 
 @endsection

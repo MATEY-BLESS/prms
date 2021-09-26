@@ -26,12 +26,13 @@
 
             <div class="col-md-6 text-center">
                 <div class="main-heading">
-                    <span class="fs-1">Elegan entry to your  web application. Some call it <strong>homepage</strong>
-                        and others <strong>landing page</strong>.</span>
+                    <span class="fs-1">Join <b>PRMS</b> & get access to a <b>Doctor</b> at the comfort of your phone.
+                        Book & Check Appointments, Prescriptions & more.
+                    </span>
                 </div>
 
                 <div class="my-5 subheading">
-                    <span>Just build something awesome.</span>
+                    <span>Every Patient deserves comfort & ease of acess to a doctor and information.</span>
                 </div>
             </div>
         </div>

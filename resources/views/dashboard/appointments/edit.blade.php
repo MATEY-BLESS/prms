@@ -78,9 +78,9 @@
             <form action="{{route('dashboard.appointments.doctor.assign', $appointment->id)}}" method="POST">
                 @csrf
                 <div class="form-group my-3">
-                    <select class="form-select @error('doctor[]') is-invalid @enderror"
-                            id="doctor" name="doctor"
-                            value="{{old('doctor[]')}}"
+                    <select class="form-select @error('admin') is-invalid @enderror"
+                            id="admin" name="admin"
+                            value="{{old('admin')}}"
                             style="width:100%;"
                             required>
 

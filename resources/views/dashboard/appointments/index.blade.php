@@ -1,75 +1,5 @@
 @extends('layouts.dashboard')
 @section('content')
-<style>
-    .section-container{
-        min-height: 600px;
-        background-color: whitesmoke;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 15px;
-    }
-
-    .list-else-message{
-        text-align: center;
-        padding: 100px;
-        color: #b1aeae;
-        font-size: 1rem;
-    }
-
-    .grid-view{
-        /* width: 200px; */
-        min-height: 200px;
-        display: none;
-    }
-
-    #testing{
-        height: 300px;
-        display: none;
-    }
-
-    .grid-view-image{
-        height: 150px;
-        background-color: #cecece;
-    }
-
-    .grid-view-image img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-    }
-
-    .grid-view-name{
-        background-color: white;
-        height: 80px;
-    }
-
-    .grid-view-date{
-        height: 30px;
-        background-color: white;
-    }
-    .extra-details{
-        border-top: 1px solid #cecece;
-        background-color: white;
-        height: 40px;
-    }
-
-    #table{
-        display: none;
-    }
-
-    #tableView{
-        width: 100%;
-    }
-
-    .appointment-admin-label{
-        font-size: 12px;
-        color: darkblue;
-        font-family: 'Passion One', cursive;
-        font-weight: lighter;
-    }
-</style>
-
 
 <div class="d-flex justify-content-between">
     <h4>Active Appointments</h4>
@@ -92,6 +22,7 @@
                         <th scope="col">Created At</th>
                         <th scope="col">Added By</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Doctor</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -111,16 +42,16 @@
 
                             <td>Who added appointment</td>
                             <td>{{$appointment->status}}</td>
+                            <td>Doctor's Name</td>
 
                             <td class="d-flex justify-content-between align-items-center">
-                                @if ($appointment->doctor_id != null)
-                                    doctor assigned
+                                @if ($appointment->admin_id != null)
+                                <a href="{{route('dashboard.appointments.edit', $appointment->id)}}" class="btn btn-success btn-sm me-1">RE-ASSIGN</a></span>
                                 @else
                                 <span class="me-1">
                                     <a href="{{route('dashboard.appointments.edit', $appointment->id)}}" class="btn btn-info btn-sm">Assign Doctor</a>
                                 </span>
                                 @endif
-
 
                                 <span><a href="#" class="btn btn-success btn-sm">VIEW</a></span>
                             </td>

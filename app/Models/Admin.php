@@ -53,7 +53,7 @@ class Admin extends Authenticatable
     }
 
     public function appointments(){
-        return $this->belongsTo('App\Models\Appointment');
+        return $this->hasMany('App\Models\Appointment');
     }
 
     public function articles(){
