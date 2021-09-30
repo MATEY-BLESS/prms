@@ -29,7 +29,7 @@
 
                 <tbody>
                     @forelse ($appointments as $appointment)
-                        {{-- @foreach ($appointment->patient as $patient) --}}
+                        {{-- @foreach ($appointment->admin as $doctor) --}}
                         <tr>
                             <td scope="row" id="appointment">{{$appointment->id}}</td>
                             <td>{{$appointment->patient->user->name}}</td>
@@ -42,7 +42,7 @@
 
                             <td>Who added appointment</td>
                             <td>{{$appointment->status}}</td>
-                            <td>Doctor's Name</td>
+                            <td>{{$appointment->admin ? $appointment->admin['name'] : ''}}</td>
 
                             <td class="d-flex justify-content-between align-items-center">
                                 @if ($appointment->admin_id != null)

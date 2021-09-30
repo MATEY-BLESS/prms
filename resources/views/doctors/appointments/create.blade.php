@@ -22,7 +22,7 @@
                             <option>Select patient</option>
                             @forelse (auth()->user()->appointments as $appointment)
                                 {{-- @foreach ($appointment->patients as $patient) --}}
-                                <option value="{{$appointment->patient->id}}">{{$appointment->patient->name}}</option>
+                                <option value="{{$appointment->patient->id}}">{{$appointment->patient->user->name}}</option>
                                 {{-- @endforeach --}}
 
                             @empty

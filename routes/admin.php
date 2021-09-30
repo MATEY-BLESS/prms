@@ -163,16 +163,22 @@ Route::middleware(['auth:admin'])->group(function () {
 
     });
 
-    // Admin Dashboard
+    // Admin's Dashboard
     Route::get('/dashboard/admin', 'BackendDashboardController@index')->name('dashboard.admin');
 
-    // Doctor Dashboard
+    // Doctor's Dashboard
     Route::get('/dashboard/doctor/home', 'DoctorDashboardController@index')
     ->name('dashboard.doctor');
+    Route::get('/dashboard/doctor/profile/{id}', 'DoctorDashboardController@show')
+    ->name('dashboard.doctor.show');
 
         // Patient
         Route::get('/dashboard/doctor/patients', 'DoctorDashboardController@patients')
         ->name('dashboard.doctors.patients.index');
+
+        Route::get('/dashboard/doctor/patients/profile/{id}', 'DoctorDashboardController@profile')
+        ->name('dashboard.doctors.patients.profile');
+
 
         // Appointment
         Route::get('/dashboard/doctor/appointments', 'DoctorDashboardController@appointments')
@@ -181,6 +187,26 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('dashboard.doctors.appointments.create');
         Route::post('/dashboard/doctor/appointments', 'DoctorDashboardController@store_appointment')
         ->name('dashboard.doctors.appointments.store');
+
+        // Prescriptions
+        Route::get('/dashboard/doctor/prescription', 'BackendPrescriptionController@index')
+        ->name('dashboard.doctors.prescription.index');
+
+        Route::get('/dashboard/doctor/prescription/create/{id}', 'BackendPrescriptionController@create')
+        ->name('dashboard.doctors.prescription.create');
+
+        Route::post('/dashboard/doctor/prescription}', 'BackendPrescriptionController@store')
+        ->name('dashboard.doctors.prescription.store');
+
+        // Route::resource('/dashboard/doctor/prescription', 'BackendPrescriptionController')->names([
+        //     'index' => 'dashboard.doctors.prescription.index',
+
+        //     'show' => 'dashboard.doctors.prescription.show',
+        //     'store' => 'dashboard.doctors.prescription.store',
+        //     'edit' => 'dashboard.doctors.prescription.edit',
+        //     'destroy' => 'dashboard.doctors.prescription.destroy',
+        // ]);
+
 
 
     // Admin User Profiles

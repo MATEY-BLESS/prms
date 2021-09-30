@@ -55,7 +55,7 @@
 
                                 <div class="quick-nav-links my-4">
                                     <a href="{{route('public.patient.appointment.index')}}" class="btn btn-info btn-sm mb-1">Appointments</a>
-                                    <a href="#" class="btn btn-info btn-sm mb-1">Prescriptions</a>
+                                    <a href="{{route('dashboard.patient.prescription.index')}}" class="btn btn-info btn-sm mb-1">Prescriptions</a>
                                     <a href="#" class="btn btn-info btn-sm mb-1">Messages</a>
                                     <a href="#" class="btn btn-info btn-sm mb-1">Medical History</a>
                                     <a href="{{route('dashboard.user')}}" class="btn btn-secondary btn-sm mb-1">Your Profile</a>

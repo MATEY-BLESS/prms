@@ -1,6 +1,10 @@
 @extends('layouts.accounts.user-dashboard')
 @section('content')
-
+<style>
+    .other-details p span{
+        font-weight: bold;
+    }
+</style>
 {{-- SECTION2: Something cool here --}}
 <div class="col-md-12">
     <div class="appointment-wrapper">
@@ -43,6 +47,19 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    {{-- other details --}}
+    <div class="appointment-wrapper my-3 p-4">
+        <div class="other-details text-center">
+            <h1>Other Details</h1>
+            <p> <span>DOB:</span>  {{Auth::user()->patient->dob}}</p>
+            <p> <span>REGION:</span>  {{Auth::user()->patient->region}}</p>
+            <p> <span>LOCALITY:</span>  {{Auth::user()->patient->locality}}</p>
+            <p> <span>NEXT OF KIN:</span>  {{Auth::user()->patient->next_of_kin}}</p>
+            <p> <span>MOBILE:</span>  {{Auth::user()->patient->mobile}}</p>
+            <p> <span>EMERGENCY CONTACT:</span>  {{Auth::user()->patient->emergency_contact}}</p>
         </div>
     </div>
 </div>

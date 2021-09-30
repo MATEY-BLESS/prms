@@ -12,9 +12,33 @@
 
 {{-- SECTION 1: roles list & add role --}}
 <h4>Admin Roles</h4>
-<div class="col-md-6">
+<div class="col-md-12">
     <div class="section-container">
-        <h5>Existing Roles</h5>
+        <div class="mb-4">
+            <form class="row" action="{{route('dashboard.admin.role.store')}}"
+                    method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                <div class="col-md-10">
+                    {{-- <label for="name">Role Name</label> --}}
+                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                            id="name" placeholder="Enter role name"
+                            name="name" value="{{old('name')}}"
+                            required>
+                    <div class="valid-feedback">
+                    Looks good!
+                    </div>
+
+                    @error('name')
+                    <small class="text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary" type="submit">ADD</button>
+                </div>
+            </form>
+        </div>
 
         <table class="table table-responsive table-hover">
             <thead>
@@ -31,7 +55,7 @@
                 @forelse ($roles as $role)
                 <tr>
                     <td scope="row">{{$role->id}}</td>
-                    <td>{{$role->name}}</td>
+                    <td>{{Str::ucfirst($role->name)}}</td>
                     <td>{{$role->created_at->isoFormat('LL')}}</td>
                     <td>{{$role->admin->name}}</td>
 
@@ -56,37 +80,6 @@
     </div>
 </div>
 
-
-<div class="col-md-6">
-    <div class="section-container">
-        <h5>Add New Role</h5>
-            <div>
-                <form class="" action="{{route('dashboard.admin.role.store')}}"
-                        method="POST" enctype="multipart/form-data">
-                        @csrf
-
-                    <div class="form-group">
-                        <label for="name">Role Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                id="name" placeholder="Enter tag name"
-                                name="name" value="{{old('name')}}"
-                                required>
-                        <div class="valid-feedback">
-                        Looks good!
-                        </div>
-
-                        @error('name')
-                        <small class="text-danger">{{$message}}</small>
-                        @enderror
-                    </div>
-
-                    <div class="col-md-3">
-                        <button class="btn btn-primary my-3" type="submit">ADD</button>
-                    </div>
-                </form>
-            </div>
-    </div>
-</div>
 {{-- END SECTION 1 --}}
 
 @endsection

@@ -52,7 +52,8 @@
                         <td>Who added doctor</td>
 
                         <td class="d-flex">
-                            <span><a href="{{route('dashboard.doctors.show', $doctor)}}" class="btn btn-success btn-sm">VIEW</a></span>
+                            <span><a href="{{route('dashboard.doctors.show', $doctor)}}"
+                                class="btn btn-success btn-sm">VIEW</a></span>
                             <span class="mx-1"><a href="{{route('dashboard.doctors.edit', $doctor)}}" class="btn btn-primary btn-sm">EDIT</a></span>
                             <span >
                                 <form action="{{route('dashboard.doctors.destroy', $doctor->id)}}" method="POST">

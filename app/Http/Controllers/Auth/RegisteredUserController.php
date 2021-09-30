@@ -66,6 +66,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $patient = $user->patient()->create([
+            'admin_id' => Auth::guard('admin')->user()->id,
             'dob' => $request->dob,
             'age' => $request->age,
             'region' => $request->region,

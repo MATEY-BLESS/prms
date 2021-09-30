@@ -47,6 +47,13 @@ class Admin extends Authenticatable
     ];
 
      // relationships
+
+    //  related to an admin who added patient
+    public function patient(){
+        return $this->hasOne(Patient::class);
+    }
+
+    //  related to doctor(s) assigned
     public function patients(){
         return $this->belongsToMany(Patient::class)
                     ->withTimestamps();
@@ -54,6 +61,10 @@ class Admin extends Authenticatable
 
     public function appointments(){
         return $this->hasMany('App\Models\Appointment');
+    }
+
+    public function prescriptions(){
+        return $this->hasMany('App\Models\Prescription');
     }
 
     public function articles(){

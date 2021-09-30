@@ -75,7 +75,7 @@
                                     class="rounded" value="{{old('role')}}"
                                     style="width: 100%; height: 35px;">
 
-                                <option value="{{$admin->role}}">{{Str::ucfirst($admin->role)}}</option>
+                                <option value="{{$admin->role}}">{{Str::ucfirst($admin->role->name)}}</option>
 
                                 @forelse ($roles as $role)
                                     <option value="{{$role->slug}}">{{Str::ucfirst($role->name)}}</option>

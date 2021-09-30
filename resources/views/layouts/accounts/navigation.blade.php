@@ -40,7 +40,6 @@
 
                             <span class="px-2">{{ Auth::user()->name }}</span>
 
-                            <span><a href="{{route('dashboard.user.profile.show', Auth::user()->slug)}}">Profile</a></span>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

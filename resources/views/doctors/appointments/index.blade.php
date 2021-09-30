@@ -23,25 +23,27 @@
                 </thead>
 
                 <tbody>
-                    @forelse (auth()->user()->patients as $patient)
+                    @forelse (auth()->user()->appointments as $appointment)
                     <tr>
-                        <td scope="row" id="patient">{{$patient->id}}</td>
-                        <td>{{$patient->user->name}}</td>
-                        <td>Purpose</td>
+                        <td scope="row" id="patient">{{$appointment->id}}</td>
+                        <td>{{$appointment->patient->user->name}}</td>
+                        <td>{{$appointment->purpose}}</td>
                         <td>
-                            <img src="{{asset($patient->user->image)}}"
+                            <img src="#"
                                     width="50" height="50" style="border-radius: 50px;">
                         </td>
-                        <td>{{$patient->created_at->isoFormat('LL')}}</td>
+                        <td>{{$appointment->created_at->isoFormat('LL')}}</td>
 
                         <td>Time</td>
-                        <td>Status</td>
+                        <td>{{$appointment->status}}</td>
 
                         <td class="d-flex justify-content-between">
-                            <span><a href="{{route('dashboard.patients.show', $patient)}}" class="btn btn-success btn-sm">VIEW PROFILE</a></span>
+                            <span><a href="{{route('dashboard.doctors.patients.profile', $appointment->patient->user->id)}}"
+                                class="btn btn-success btn-sm">VIEW PROFILE</a></span>
 
-                            <span class="mx-1"><a href="#"
-                                class="btn btn-warning btn-sm">Give Prescription</a></span>
+                            <span class="mx-1">
+                                <a href="{{route('dashboard.doctors.prescription.create', $appointment->id)}}" class="btn btn-warning btn-sm">Give Prescription</a>
+                            </span>
 
                             <span class="mx-1"><a href="#"
                                 class="btn btn-warning btn-sm">Send Message</a></span>

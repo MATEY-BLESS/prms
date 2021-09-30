@@ -35,7 +35,7 @@
                         </td>
                         <td>{{$patient->created_at->isoFormat('LL')}}</td>
 
-                        <td>Who added patient</td>
+                        <td>{{$patient->admin ? $patient->admin->name : 'Patient'}}</td>
 
                         <td class="d-flex justify-content-between">
                             <span>

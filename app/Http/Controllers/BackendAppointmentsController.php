@@ -10,7 +10,8 @@ class BackendAppointmentsController extends Controller
 {
     public function index()
     {
-        $appointments = Appointment::with('patient')->get();
+        $appointments = Appointment::with('admin')->get();
+        // dd($appointments);
         return view('dashboard.appointments.index', [
             'appointments' => $appointments,
         ]);

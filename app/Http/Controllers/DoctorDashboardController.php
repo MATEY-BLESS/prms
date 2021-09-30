@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
+use App\Models\Patient;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 
@@ -10,6 +12,14 @@ class DoctorDashboardController extends Controller
     public function index()
     {
         return view('doctors.index');
+    }
+
+    public function show($id)
+    {
+        $doctor = Admin::findOrFail($id);
+        return view('doctors.show', [
+            'doctor' => $doctor,
+        ]);
     }
 
     public function patients()
@@ -32,5 +42,13 @@ class DoctorDashboardController extends Controller
     public function store_appointment()
     {
         return "it will work";
+    }
+
+    public function profile($id)
+    {
+        $patient = Patient::findOrFail($id);
+        return view('doctors.patients.profile', [
+            'patient' => $patient,
+        ]);
     }
 }

@@ -13,8 +13,39 @@
 {{-- SECTION 1: --}}
     {{-- List of departments --}}
     <h4>List of Departments</h4>
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="section-container">
+            <div class="mb-4">
+                <h5><b>Add department</b></h5>
+
+                <form class="" action="{{route('dashboard.departments.store')}}"
+                            method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="row">
+                        <!-- name -->
+                        <div class="col-md-10">
+                            {{-- <label for="name">name</label> --}}
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="name" placeholder="Enter department name"
+                                name="name" value="{{old('name')}}"
+                                required>
+                                <div class="valid-feedback">
+                                Looks good!
+                                </div>
+
+                                @error('name')
+                                <small class="text-danger">{{$message}}</small>
+                                @enderror
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" type="submit">ADD</button>
+                        </div>
+
+
+                  </div>
+                </form>
+            </div>
             <table class="table table-responsive table-hover">
                 <thead>
                     <tr>
@@ -30,7 +61,7 @@
                     @forelse ($departments as $department)
                     <tr>
                         <td scope="row">{{$department->id}}</td>
-                        <td>{{$department->name}}</td>
+                        <td>{{Str::ucfirst($department->name)}}</td>
                         <td>{{$department->created_at->isoFormat('LL')}}</td>
                         <td>{{$department->admin->name}}</td>
 
@@ -56,38 +87,7 @@
 
     {{-- Add department --}}
     <div class="col-md-6">
-        <div class="section-container">
-            <h5>Add department</h5>
 
-            <form class="p-2" action="{{route('dashboard.departments.store')}}"
-                        method="POST" enctype="multipart/form-data">
-              @csrf
-              <div class="form-row">
-
-                <!-- name -->
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="name">name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                            id="name" placeholder="Enter department name"
-                            name="name" value="{{old('name')}}"
-                            required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-
-                    @error('name')
-                    <small class="text-danger">{{$message}}</small>
-                    @enderror
-                  </div>
-                </div>
-              </div>
-
-
-              <button class="btn btn-primary my-3" type="submit">ADD</button>
-
-            </form>
-        </div>
     </div>
 {{-- END SECTION 1 --}}
 

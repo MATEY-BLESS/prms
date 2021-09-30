@@ -34,12 +34,15 @@ class BackendDoctorsController extends Controller
 
     public function store(Request $request)
     {
-        //
+
     }
 
     public function show($id)
     {
-        //
+        $doctor = Admin::findOrFail($id);;
+        return view('dashboard.doctors.show', [
+            'doctor' => $doctor,
+        ]);
     }
 
     public function edit($id)

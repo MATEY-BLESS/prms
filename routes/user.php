@@ -43,6 +43,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/dashboard/patient/appointment', 'PublicPatientController@appointment_store')
     ->name('public.patient.appointment.store');
+
+    // Prescriptions
+    Route::resource('/dashboard/patient/prescription', 'PublicPrescriptionController')->names([
+        'index' => 'dashboard.patient.prescription.index',
+        'show' => 'dashboard.patient.prescription.show',
+    ]);
 });
 
 

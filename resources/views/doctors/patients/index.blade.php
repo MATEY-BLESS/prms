@@ -34,7 +34,7 @@
                         <td>Who added patient</td>
 
                         <td class="d-flex justify-content-between">
-                            <span><a href="{{route('dashboard.patients.show', $patient)}}" class="btn btn-success btn-sm">VIEW PROFILE</a></span>
+                            <span><a href="{{route('dashboard.doctors.patients.profile', $patient)}}" class="btn btn-success btn-sm">VIEW PROFILE</a></span>
 
                             <span class="mx-1"><a href="#"
                                 class="btn btn-warning btn-sm">Give Prescription</a></span>
