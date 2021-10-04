@@ -160,17 +160,38 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/dashboard/appointments/{id}', 'BackendAppointmentsController@assign')
         ->name('dashboard.appointments.doctor.assign');
 
+        // prescriptions
+        Route::resource('/dashboard/prescriptions', 'BackendPrescriptionController')->names([
+            'index' => 'dashboard.prescriptions.index',
+            'show' => 'dashboard.prescriptions.show',
+        ]);
+
+
 
     });
 
     // Admin's Dashboard
     Route::get('/dashboard/admin', 'BackendDashboardController@index')->name('dashboard.admin');
 
+
     // Doctor's Dashboard
     Route::get('/dashboard/doctor/home', 'DoctorDashboardController@index')
     ->name('dashboard.doctor');
+
     Route::get('/dashboard/doctor/profile/{id}', 'DoctorDashboardController@show')
     ->name('dashboard.doctor.show');
+
+    Route::get('/dashboard/doctor/profile/edit/{id}', 'DoctorDashboardController@edit')
+    ->name('dashboard.doctor.edit');
+
+    Route::patch('dashboard/doctor/profile/{id}/update', 'BackendDoctorsController@update')
+    ->name('dashboard.doctor.update');
+
+    Route::get('dashboard/doctor/profile/password/{id}', 'BackendDoctorsController@change_password')
+    ->name('dashboard.doctor.change_password');
+
+    Route::patch('dashboard/doctor/profile/password/{id}/update', 'BackendDoctorsController@password_update')
+    ->name('dashboard.doctor.password_update');
 
         // Patient
         Route::get('/dashboard/doctor/patients', 'DoctorDashboardController@patients')
@@ -189,23 +210,14 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('dashboard.doctors.appointments.store');
 
         // Prescriptions
-        Route::get('/dashboard/doctor/prescription', 'BackendPrescriptionController@index')
+        Route::get('/dashboard/doctor/prescription', 'DoctorDashboardController@prescriptions')
         ->name('dashboard.doctors.prescription.index');
 
         Route::get('/dashboard/doctor/prescription/create/{id}', 'BackendPrescriptionController@create')
         ->name('dashboard.doctors.prescription.create');
 
-        Route::post('/dashboard/doctor/prescription}', 'BackendPrescriptionController@store')
+        Route::post('/dashboard/doctor/prescription', 'BackendPrescriptionController@store')
         ->name('dashboard.doctors.prescription.store');
-
-        // Route::resource('/dashboard/doctor/prescription', 'BackendPrescriptionController')->names([
-        //     'index' => 'dashboard.doctors.prescription.index',
-
-        //     'show' => 'dashboard.doctors.prescription.show',
-        //     'store' => 'dashboard.doctors.prescription.store',
-        //     'edit' => 'dashboard.doctors.prescription.edit',
-        //     'destroy' => 'dashboard.doctors.prescription.destroy',
-        // ]);
 
 
 

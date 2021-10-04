@@ -13,7 +13,9 @@ class BackendPrescriptionController extends Controller
     {
         $prescriptions = Prescription::with('admin')->with('patient')->get();
         // dd($prescriptions);
-        return view('doctors.prescriptions.index');
+        return view('dashboard.prescriptions.index', [
+            'prescriptions' => $prescriptions,
+        ]);
     }
 
     public function create($id)
@@ -40,7 +42,7 @@ class BackendPrescriptionController extends Controller
             'medicine' => 'required|string',
             'note' => 'nullable|string',
             'patient_id' => 'integer',
-            'admin_id' => 'integer',
+            'doctor_id' => 'integer',
 
         ]);
 
@@ -50,7 +52,7 @@ class BackendPrescriptionController extends Controller
         $prescription->medicine = $input['medicine'];
         $prescription->note = $input['note'];
         $prescription->patient_id = $input['patient_id'];
-        $prescription->admin_id = $input['admin_id'];
+        $prescription->doctor_id = $input['doctor_id'];
 
         $prescription->save();
 

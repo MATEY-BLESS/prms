@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
-use App\Models\Patient;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class BackendPatientsController extends Controller
@@ -13,8 +14,8 @@ class BackendPatientsController extends Controller
 
     public function index()
     {
-        $patients = User::all();
-        $roles = Role::with('admins')->where('name', 'doctor')->get();
+        $patients = Patient::with('user')->get();
+        $roles = Role::with('admin')->where('name', 'doctor')->get();
         return view('dashboard.patients.index', [
             'patients' => $patients,
             'roles' => $roles,
@@ -57,11 +58,11 @@ class BackendPatientsController extends Controller
         $patient = Patient::findOrFail($id);
 
         // return $patient->name;
-        $roles = Role::with('admins')->where('name', 'doctor')->get();
+        $doctors = Doctor::all();
 
         return view('dashboard.patients.assign_doctor', [
             'patient' => $patient,
-            'roles' => $roles,
+            'doctors' => $doctors,
         ]);
 
     }
@@ -73,7 +74,7 @@ class BackendPatientsController extends Controller
 
         // return $patient;
 
-        $patient->admins()->attach(request('doctor'));
+        $patient->doctors()->attach(request('doctor'));
         return redirect()->route('dashboard.patients.index');
     }
 }

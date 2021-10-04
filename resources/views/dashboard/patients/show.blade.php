@@ -101,7 +101,7 @@
                 <div class="col-lg-6">
                     <h4 id="headingColor">Current Doctors</h4>
                     <ol>
-                        @forelse ($patient->admins as $doctor)
+                        @forelse ($patient->doctors as $doctor)
                         <li>Dr. {{$doctor->name}}</li>
                         @empty
                         <li>You have no doctor(s) currently assigned.</li>

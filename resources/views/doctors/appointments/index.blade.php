@@ -23,7 +23,7 @@
                 </thead>
 
                 <tbody>
-                    @forelse (auth()->user()->appointments as $appointment)
+                    @forelse (auth()->user()->doctor->appointments as $appointment)
                     <tr>
                         <td scope="row" id="patient">{{$appointment->id}}</td>
                         <td>{{$appointment->patient->user->name}}</td>

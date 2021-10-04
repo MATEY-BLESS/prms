@@ -74,48 +74,72 @@
 
     <div class="row px-lg-5">
         <h5>Assign Doctor to <b>{{$appointment->patient->user->name}}'s Appointment</b></h5>
-        <div class="col-md-6">
+        <div class="col-md-12">
+            {{-- assign --}}
             <form action="{{route('dashboard.appointments.doctor.assign', $appointment->id)}}" method="POST">
                 @csrf
-                <div class="form-group my-3">
+                <div class="form-group my-3 d-flex flex-wrap align-items-center justify-content-between">
+                    <input type="hidden" name="patient" value="{{$appointment->id}}">
+
                     <select class="form-select @error('admin') is-invalid @enderror"
-                            id="admin" name="admin"
+                            id="admin" name="doctor"
                             value="{{old('admin')}}"
-                            style="width:100%;"
+                            style="width: 90%;"
                             required>
 
                         <option>Select Doctor</option>
-                        @forelse ($roles as $role)
-                        @foreach ($role->admins as $doctor)
-                            <option value="{{$doctor->id}}">{{$doctor->name}}</option>
-                        @endforeach
-
+                        @forelse ($doctors as $doctor)
+                            <option value="{{$doctor->id}}">{{$doctor->admin->name}}</option>
                         @empty
                         <option >No doctors</option>
                         @endforelse
 
                     </select>
+
+                    <button type="submit" class="btn btn-primary btn-sm">ASSIGN</button>
+
                 </div>
 
-                <input type="hidden" name="patient" value="{{$appointment->id}}">
 
-                <button type="submit" class="btn btn-primary btn-sm">ASSIGN</button>
+
             </form>
         </div>
 
+        {{-- existing --}}
+        <div class="my-4">
+            <h5>
+                <b>Assinged Doctors</b>
+            </h5>
+
+            @if ($appointment->doctor)
+
+            <table class="table table-responsive table-hover" >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Doctor</th>
+                        <th scope="col">Reason or Disease</th>
+                        <th scope="col">Appointment Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td scope="row" id="patient">{{$appointment->id}}</td>
+                        <td scope="row" id="patient">{{$appointment->doctor->admin->name}}</td>
+                        <td>{{$appointment->purpose}}</td>
+                        <td>{{$appointment->status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @endif
+
+
+        </div>
         <div class="col-md-1"></div>
         <div class="col-md-5">
-            <div class="my-4">
-                <h4>
-                    <b>Patient's Assinged Doctors</b>
-                </h4>
 
-                <ol>
-
-                    <li></li>
-
-                </ol>
-            </div>
 
         </div>
 

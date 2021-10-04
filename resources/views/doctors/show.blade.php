@@ -40,6 +40,7 @@
 
     .other-details p span{
         font-weight: bold;
+        font-size: 1.3rem;
     }
 
 
@@ -51,7 +52,7 @@
         {{-- doctor image --}}
         <div class="col-md-3 col-xxl-3">
             <div class="doctor-img-box" style="">
-                <img src="{{asset($doctor->image)}}" alt="">
+                <img src="{{asset($doctor->image)}}">
             </div>
         </div>
 
@@ -60,7 +61,7 @@
             <div class="doctor-details-box">
 
                 <h1>
-                    <b>{{$doctor->name}}</b>
+                    <b>{{$doctor->admin->name}}</b>
                 </h1>
 
                 <p>
@@ -70,7 +71,7 @@
 
                 <p>
                     <span style="font-weight: bold;">Email:</span>
-                    {{$doctor->email}}
+                    {{$doctor->admin->email}}
                 </p>
 
                 <p>
@@ -79,7 +80,8 @@
                 </p>
 
                 <div class="mt-4">
-                    <a href="#" class="btn btn-outline-success btn-sm">EDIT PROFILE</a>
+                    <a href="{{route('dashboard.doctor.edit', $doctor)}}" class="btn btn-outline-success btn-sm">EDIT PROFILE</a>
+                    <a href="{{route('dashboard.doctor.change_password', $doctor)}}" class="btn btn-outline-danger btn-sm">CHANGE PASSWORD</a>
                 </div>
             </div>
         </div>
@@ -91,13 +93,16 @@
             <div class="recent-activity border">
                 <div class="other-details text-center">
                     <h1 id="headingColor">Other Deatils</h1>
+                    <div class="mb-3">
+                        <small>Complete your profile by adding the following information.</small>
+                    </div>
 
-                    <p> <span>DOB:</span>  {{$doctor->dob}}</p>
-                    <p> <span>REGION:</span>  {{$doctor->region}}</p>
-                    <p> <span>LOCALITY:</span>  {{$doctor->locality}}</p>
-                    <p> <span>NEXT OF KIN:</span>  {{$doctor->next_of_kin}}</p>
-                    <p> <span>MOBILE:</span>  {{$doctor->mobile}}</p>
-                    <p> <span>EMERGENCY CONTACT:</span>  {{$doctor->emergency_contact}}</p>
+                    <p>DOB: <span>{{$doctor->dob}}</span> </p>
+                    <p>REGION: <span>{{$doctor->region}}</span></p>
+                    <p>RELIGION: <span>{{$doctor->religion}}</span></p>
+                    <p>NEXT OF KIN:  <span>{{$doctor->next_of_kin}}</span></p>
+                    <p>MOBILE:  <span>{{$doctor->mobile}}</span></p>
+                    <p>EMERGENCY CONTACT:  <span>{{$doctor->emergency_contact}}</span></p>
                 </div>
             </div>
         </div>

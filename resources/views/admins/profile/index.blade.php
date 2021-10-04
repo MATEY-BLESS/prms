@@ -53,7 +53,7 @@
 
             <p>
                 <span style="font-weight: bold;">Role:</span>
-                {{auth('admin')->user()->role}}
+                {{auth('admin')->user()->role->name}}
             </p>
 
             <p>

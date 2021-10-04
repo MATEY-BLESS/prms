@@ -19,4 +19,9 @@ class Appointment extends Model
     public function admin(){
         return $this->belongsTo(Admin::class);
     }
+
+    public function doctor(){
+        return $this->belongsTo(Doctor::class);
+    }
+
 }

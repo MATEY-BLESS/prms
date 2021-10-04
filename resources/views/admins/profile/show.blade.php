@@ -53,7 +53,7 @@
 
             <p>
                 <span style="font-weight: bold;">Role:</span>
-                {{$profile->role}}
+                {{$profile->role->name}}
             </p>
 
             <p>

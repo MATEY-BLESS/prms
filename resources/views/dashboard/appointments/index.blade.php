@@ -42,10 +42,12 @@
 
                             <td>Who added appointment</td>
                             <td>{{$appointment->status}}</td>
-                            <td>{{$appointment->admin ? $appointment->admin['name'] : ''}}</td>
+                            <td>
+                                <b>{{$appointment->doctor ? $appointment->doctor->admin->name   : 'N/a'}}</b>
+                            </td>
 
                             <td class="d-flex justify-content-between align-items-center">
-                                @if ($appointment->admin_id != null)
+                                @if ($appointment->doctor_id != null)
                                 <a href="{{route('dashboard.appointments.edit', $appointment->id)}}" class="btn btn-success btn-sm me-1">RE-ASSIGN</a></span>
                                 @else
                                 <span class="me-1">

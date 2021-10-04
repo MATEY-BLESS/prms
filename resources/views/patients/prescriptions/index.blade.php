@@ -19,19 +19,20 @@
                 </thead>
 
                 <tbody>
-                    @forelse (auth()->user()->patient->prescription as $prescribe)
+                    @forelse (auth()->user()->patient->prescriptions as $prescription)
                     <tr>
-                        <td scope="row" id="patient">{{$prescribe->id}}</td>
-                        <td>Dr. {{$prescribe->admin->name}}</td>
-                        <td>{{$prescribe->disease}}</td>
-                        <td>{{$prescribe->details}}</td>
-                        <td>{{$prescribe->medicine}}</td>
-                        <td>{{$prescribe->note}}</td>
-                        <td>{{$prescribe->created_at->isoFormat('LL')}}</td>
+                        <td scope="row" id="patient">{{$prescription->id}}</td>
+                        <td>Dr. {{$prescription->doctor->admin->name}}</td>
+                        <td>{{$prescription->disease}}</td>
+                        <td>{{$prescription->details}}</td>
+                        <td>{{$prescription->medicine}}</td>
+                        <td>{{$prescription->note}}</td>
+                        <td>{{$prescription->created_at->isoFormat('LL')}}</td>
 
                         <td class="d-flex justify-content-between">
                             <span class="mx-1">
-                                <a href="#" class="btn btn-warning btn-sm">VIEW</a>
+                                <a href="{{route('dashboard.patient.prescription.show', $prescription->id)}}"
+                                    class="btn btn-warning btn-sm">VIEW</a>
                             </span>
 
                             <span class="mx-1">

@@ -13,16 +13,20 @@ class BackendDashboardController extends Controller
 {
     public function index()
     {
-        $doctors = Role::withCount('admins')->where('name', 'doctor')->get();
 
-        // dd($doctors) ;
+        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+
+        // revist this
+        $activeDoctors = Role::where('name', 'doctor')->get();
+
         $patients = Patient::all();
         $appointments = Appointment::with('admin')->get();
-        // dd($appointments);
+
         return view('dashboard.index', [
             'doctors' => $doctors,
             'patients' => $patients,
             'appointments' => $appointments,
+            'activeDoctors' => $activeDoctors,
         ]);
     }
 }

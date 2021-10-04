@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\Doctor;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class BackendAppointmentsController extends Controller
 {
     public function index()
     {
-        $appointments = Appointment::with('admin')->get();
+        $appointments = Appointment::with('doctor')->get();
         // dd($appointments);
         return view('dashboard.appointments.index', [
             'appointments' => $appointments,
@@ -35,10 +36,10 @@ class BackendAppointmentsController extends Controller
     public function edit($id)
     {
         $appointment = Appointment::findOrFail($id);
-        $roles = Role::with('admins')->where('name', 'doctor')->get();
+        $doctors = Doctor::with('admin')->get();
         return view('dashboard.appointments.edit', [
             'appointment' => $appointment,
-            'roles' => $roles,
+            'doctors' => $doctors,
         ]);
     }
 
@@ -55,7 +56,7 @@ class BackendAppointmentsController extends Controller
     public function assign(Request $request, $id){
         $appointment = Appointment::findOrFail($id);
 
-        $appointment->admin_id = $request->admin;
+        $appointment->doctor_id = $request->doctor;
         $appointment->save();
 
         return redirect()->route('dashboard.appointments.index');

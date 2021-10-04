@@ -65,7 +65,7 @@
                                 <a href="{{route('dashboard.doctors.patients.index')}}" class="btn btn-info btn-sm my-1">Patients</a>
                                 <a href="{{route('dashboard.doctors.appointments.index')}}" class="btn btn-info btn-sm my-1">Appointments</a>
                                 <a href="{{route('dashboard.doctors.prescription.index')}}" class="btn btn-info btn-sm my-1">Prescriptions</a>
-                                <a href="{{route('dashboard.doctor.show', auth()->user())}}" class="btn btn-success btn-sm my-1">Your Profile</a>
+                                <a href="{{route('dashboard.doctor.show', auth()->user()->doctor->id)}}" class="btn btn-success btn-sm my-1">Your Profile</a>
                             </div>
                         </div>
 

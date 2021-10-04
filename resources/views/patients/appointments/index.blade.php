@@ -23,11 +23,11 @@
                     <div>
                     On: {{$appointment->date}}
 
-                    @if ($appointment->admin)
+                    @if ($appointment->doctor)
                     <p>
                         <b>With:</b>
                         <span class="bg-warning px-2 rounded" style="width: fit-content">
-                            Dr. {{$appointment->admin->name}}
+                            Dr. {{$appointment->doctor->admin->name}}
                         </span>
                     </p>
                     @else

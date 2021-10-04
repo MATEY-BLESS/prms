@@ -39,6 +39,7 @@
 
     .other-details p span{
         font-weight: bold;
+        font-size: 1.3rem;
     }
 
 
@@ -59,7 +60,7 @@
             <div class="doctor-details-box">
 
                 <h1>
-                    <b>{{$doctor->name}}</b>
+                    <b>{{$doctor->admin->name}}</b>
                 </h1>
 
                 <p>
@@ -69,7 +70,7 @@
 
                 <p>
                     <span style="font-weight: bold;">Email:</span>
-                    {{$doctor->email}}
+                    {{$doctor->admin->email}}
                 </p>
 
                 <p>
@@ -91,12 +92,12 @@
                 <div class="other-details text-center">
                     <h1 id="headingColor">Other Deatils</h1>
 
-                    <p> <span>DOB:</span>  {{$doctor->dob}}</p>
-                    <p> <span>REGION:</span>  {{$doctor->region}}</p>
-                    <p> <span>LOCALITY:</span>  {{$doctor->locality}}</p>
-                    <p> <span>NEXT OF KIN:</span>  {{$doctor->next_of_kin}}</p>
-                    <p> <span>MOBILE:</span>  {{$doctor->mobile}}</p>
-                    <p> <span>EMERGENCY CONTACT:</span>  {{$doctor->emergency_contact}}</p>
+                    <p>DOB: <span>{{$doctor->dob}}</span> </p>
+                    <p>REGION: <span>{{$doctor->region}}</span></p>
+                    <p>RELIGION: <span>{{$doctor->religion}}</span></p>
+                    <p>NEXT OF KIN:  <span>{{$doctor->next_of_kin}}</span></p>
+                    <p>MOBILE:  <span>{{$doctor->mobile}}</span></p>
+                    <p>EMERGENCY CONTACT:  <span>{{$doctor->emergency_contact}}</span></p>
                 </div>
             </div>
         </div>

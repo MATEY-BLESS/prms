@@ -48,6 +48,10 @@ class Admin extends Authenticatable
 
      // relationships
 
+    public function doctor(){
+        return $this->hasOne(Doctor::class);
+    }
+
     //  related to an admin who added patient
     public function patient(){
         return $this->hasOne(Patient::class);

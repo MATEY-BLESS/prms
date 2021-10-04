@@ -18,7 +18,7 @@
                     <div class="row">
                         {{-- patient name --}}
                         <input type="hidden" name="patient_id" value="{{$appointment->patient->user->id}}">
-                        <input type="hidden" name="admin_id" value="{{$appointment->admin->id}}">
+                        <input type="text" name="doctor_id" value="{{$appointment->doctor->id}}">
 
                         {{-- disease --}}
                         <div class="col-md-12 my-2">

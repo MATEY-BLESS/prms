@@ -28,7 +28,7 @@
                     @forelse ($patients as $patient)
                     <tr>
                         <td scope="row" id="patient">{{$patient->id}}</td>
-                        <td>{{$patient->name}}</td>
+                        <td>{{$patient->user->name}}</td>
                         <td>
                             <img src="{{asset($patient->image)}}"
                                     width="50" height="50" style="border-radius: 50px;">

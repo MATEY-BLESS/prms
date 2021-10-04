@@ -12,4 +12,19 @@ class Doctor extends Model
     protected $guarded = [];
 
     // relationships
+    public function admin(){
+        return $this->belongsTo(Admin::class);
+    }
+
+    public function patients(){
+        return $this->belongsToMany(Patient::class);
+    }
+
+    public function prescriptions(){
+        return $this->hasMany(Prescription::class);
+    }
+
+    public function appointments(){
+        return $this->hasMany(Appointment::class);
+    }
 }

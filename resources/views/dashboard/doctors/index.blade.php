@@ -8,14 +8,13 @@
     </div>
 
     <div>
-        <a href="#" class="btn btn-secondary btn-sm">Assign Patient</a>
         <a href="{{route('dashboard.doctors.create')}}" class="btn btn-success btn-sm">Add Doctor</a>
     </div>
 
 </div>
 
 <div class="section-container">
-    @if ($roles->count() > 0)
+    @if ($doctors->count() > 0)
         <div class="d-flex justify-content-between">
             <div class="mb-2">
                 <input class="btn btn-secondary btn-sm" type="button" value="TABLE" id="table">
@@ -38,11 +37,10 @@
                 </thead>
 
                 <tbody>
-                    @forelse ($roles as $role)
-                    @foreach ($role->admins as $doctor)
+                    @forelse ($doctors as $doctor)
                     <tr>
                         <td scope="row">{{$doctor->id}}</td>
-                        <td>{{$doctor->name}}</td>
+                        <td>{{$doctor->admin->name}}</td>
                         <td>
                             <img src="{{asset($doctor->image)}}"
                                     width="50" height="50" style="border-radius: 50px;">
@@ -66,11 +64,7 @@
 
 
                         </td>
-
-
                     </tr>
-                    @endforeach
-
                     @empty
                         <td>No doctors</td>
                     @endforelse
@@ -81,8 +75,7 @@
 
         {{-- GRID VIEW --}}
         <div class="row">
-            @forelse ($roles as $role)
-                @foreach ($role->admins as $doctor)
+            @forelse ($doctors as $doctor)
 
                 <div class="col-sm-6 col-md-4 col-xxl-3">
 
@@ -96,7 +89,7 @@
                         <div class="">
                             <div class="grid-view-name px-2">
                                 <h6 class="py-2">
-                                    <b>{{$doctor->name}}</b>
+                                    <b>{{$doctor->admin->name}}</b>
                                 </h6>
                             </div>
 
@@ -135,7 +128,6 @@
                     </div>
 
                 </div>
-                @endforeach
 
             @empty
                 <td>No doctors</td>

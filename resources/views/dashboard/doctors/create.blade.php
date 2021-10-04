@@ -94,20 +94,6 @@
                             </select>
                         </div>
 
-                        {{-- profile image --}}
-                        <div class="col-md-6 my-3">
-                            <div class="form-group">
-                                <label for="formFile" class="form-label">Profile Image</label>
-                                <input  class="form-control @error('image') is-invalid @enderror"
-                                        type="file" id="formFile"
-                                        name="image">
-
-                                @error('image')
-                                <small class="text-danger">{{$message}}</small>
-                                @enderror
-                            </div>
-                        </div>
-
                         {{-- submit button --}}
                         <div class="col-md-6 my-5">
                             <button type="submit" class="btn btn-primary"

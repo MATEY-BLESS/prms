@@ -22,16 +22,15 @@ class Patient extends Model
     }
 
     // Doctor(s) assigned to patient
-    public function admins(){
-        return $this->belongsToMany(Admin::class)
-                    ->withTimestamps();
+    public function doctors(){
+        return $this->belongsToMany(Doctor::class);
     }
 
     public function appointments(){
         return $this->hasMany(Appointment::class);
     }
 
-    public function prescription(){
+    public function prescriptions(){
         return $this->hasMany(Prescription::class);
     }
 }

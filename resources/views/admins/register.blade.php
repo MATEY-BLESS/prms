@@ -13,7 +13,7 @@
                 </h4>
             </div>
 
-            <form method="POST" action="{{ route('admin.register') }}">
+            <form method="POST" action="{{ route('admin.register') }}" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Validation Errors -->

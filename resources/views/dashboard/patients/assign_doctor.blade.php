@@ -86,11 +86,8 @@
                             required>
 
                         <option>Select Doctor</option>
-                        @forelse ($roles as $role)
-                        @foreach ($role->admins as $doctor)
-                            <option value="{{$doctor->id}}">{{$doctor->name}}</option>
-                        @endforeach
-
+                        @forelse ($doctors as $doctor)
+                            <option value="{{$doctor->id}}">{{$doctor->admin->name}}</option>
                         @empty
                         <option >No doctors</option>
                         @endforelse
@@ -112,8 +109,8 @@
                 </h4>
 
                 <ol>
-                    @foreach ($patient->admins as $doctor)
-                    <li>{{$doctor->name}}</li>
+                    @foreach ($patient->doctors as $doctor)
+                    <li>{{$doctor->admin->name}}</li>
                     @endforeach
                 </ol>
             </div>

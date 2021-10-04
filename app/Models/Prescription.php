@@ -21,4 +21,8 @@ class Prescription extends Model
         return $this->belongsTo(Admin::class);
     }
 
+    public function doctor(){
+        return $this->belongsTo(Doctor::class);
+    }
+
 }

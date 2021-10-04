@@ -4,7 +4,7 @@
 {{-- Doctor's Patients --}}
 <div class="col-md-12">
     <div class="top-articles">
-        <h5 class="stat-heading">Pending Appointments</h5>
+        <h5 class="stat-heading">Prescriptions</h5>
 
         <div class="table-responsive">
             <table class="table table-hover" >
@@ -22,7 +22,7 @@
                 </thead>
 
                 <tbody>
-                    @forelse (auth()->user()->prescriptions as $prescription)
+                    @forelse (auth()->user()->doctor->prescriptions as $prescription)
                     <tr>
                         <td scope="row" id="patient">{{$prescription->id}}</td>
                         <td>{{$prescription->patient->user->name}}</td>
@@ -51,7 +51,7 @@
 
                     </tr>
                     @empty
-                        <td>No patients</td>
+                        <td>You have not written any prescriptions yet.</td>
                     @endforelse
                 </tbody>
             </table>

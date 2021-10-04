@@ -53,8 +53,8 @@
                 <h5 class="stat-heading">Doctors</h5>
 
                 <div class="main-stats-wrapper">
-                    <p><span><b>{{$doctors[0]->id}}</b></span> Added</p>
-                    <p><span><b>3</b></span> Active</p>
+                    <p><span><b>{{$doctors->count()}}</b></span> Added</p>
+                    <p><span><b>n/a</b></span> Active</p>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 <h5 class="stat-heading">Patients</h5>
                 <div class="main-stats-wrapper">
                     <p><span><b>{{$patients->count()}}</b></span> Total</p>
-                    <p><span><b>2</b></span> Active</p>
+                    <p><span><b>n/a</b></span> Active</p>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 <h5 class="stat-heading">Appointments</h5>
                 <div class="main-stats-wrapper">
                     <p><span><b>{{$appointments->count()}}</b></span> Received</p>
-                    <p><span><b>2</b></span> Assigned</p>
+                    <p><span><b>n/a</b></span> Assigned</p>
                 </div>
 
             </div>
